@@ -1,0 +1,47 @@
+CREATE TABLE IF NOT EXISTS st_user_base (
+     user_id varchar(30) NOT NULL,
+     user_nm varchar(100) NOT NULL,
+     pwd varchar(100) NOT NULL,
+     user_gb_cd varchar(10) NOT NULL,
+     rt_grp_no varchar(15) NOT NULL,
+     org_typ_cd varchar(10) NOT NULL,
+     org_rol_cd varchar(10) NOT NULL,
+     work_stat_cd varchar(10) NOT NULL,
+     emp_no varchar(20) NULL,
+     dept_nm varchar(200) NULL,
+     tel_rgn_no varchar(4) NULL,
+     tel_txno_no varchar(4) NULL,
+     tel_end_no varchar(4) NULL,
+     cell_sct_no varchar(4) NOT NULL,
+     cell_txno_no varchar(4) NOT NULL,
+     cell_end_no varchar(4) NOT NULL,
+     itel_no varchar(20) NULL,
+     email_addr varchar(200) NOT NULL,
+     ind_info_deal_yn varchar(1) NOT NULL,
+     use_strt_dt varchar(8) NOT NULL,
+     use_end_dt varchar(8) NOT NULL,
+     rcnt_use_dtm timestamp NULL,
+     pwd_cntn_fail_cnt numeric(10) NOT NULL DEFAULT 0,
+     lst_pwd_chg_dtm timestamp NULL,
+     pwd_lock_yn varchar(1) NOT NULL,
+     pwd_ini_yn varchar(1) NOT NULL DEFAULT 'N'::character varying,
+     use_yn varchar(1) NOT NULL,
+     sys_reg_id varchar(30) NOT NULL,
+     sys_reg_dtm timestamp NOT NULL,
+     sys_mod_id varchar(30) NOT NULL,
+     sys_mod_dtm timestamp NOT NULL,
+     entr_no varchar(15) NULL,
+     CONSTRAINT st_user_base_pk PRIMARY KEY (user_id)
+);
+
+CREATE TABLE public.st_ind_info_qry_rt_info (
+    user_id varchar(30) NOT NULL,
+    ind_info_gb_cd varchar(10) NOT NULL,
+    use_yn varchar(1) NOT NULL,
+    sys_reg_id varchar(30) NOT NULL,
+    sys_reg_dtm timestamp NOT NULL,
+    sys_mod_id varchar(30) NOT NULL,
+    sys_mod_dtm timestamp NOT NULL,
+    CONSTRAINT st_ind_info_qry_rt_info_pk PRIMARY KEY (user_id, ind_info_gb_cd)
+);
+
